@@ -13,7 +13,7 @@ matrix:
     - os: osx
       osx_image: xcode9.3
       compiler: clang
-      env: COMPILER='clang++' BUILD_TYPE='Release'
+      env: COMPILER='clang' BUILD_TYPE='Release'
 
 install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew tap Electrux/ccp4m && brew install yaml-cpp ccp4m          ; fi
@@ -21,7 +21,7 @@ install:
   - printf 'travis\ntravis@travis.org' | ccp4m
 script:
   - ccp4m project build
-  - ccp4m project build
+  - cat ~/.ccp4m/logs/Tuesday.June.12.18.log
   - ccp4m project test
   - bin/ls_extended
 after_script:
